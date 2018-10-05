@@ -93,11 +93,6 @@ require 'rails_helper'
             @movie_2 = Movie.create(:id => "123", title: "title_2", director: "wpq")
         end
         
-        it "return sad path if no director" do
-            @movie_4 = Movie.create(:id => "789", title: "title_4", director: nil)
-            get :same_director,  id: @movie_4[:id]
-            expect(response).to redirect_to(movies_path)
-        end
         
         it "return happy path if director exists" do
             @movie_3 = Movie.create(:id => "456", title: "title_3", director: "wpq")
