@@ -2,7 +2,7 @@ require 'rails_helper'
  describe MoviesController, :type => :controller do
     
     before(:each) do
-        @movie_1 = Movie.create(title: "title_1",rating: "G", description:"we are here", director: "abc123",release_date: 20161123)
+        @movie_1 = Movie.create(title: "128 Days",rating: "G", description:"128 Days", director: "Nolan",release_date: 20181005)
     end
     
     describe "#index" do
@@ -26,12 +26,12 @@ require 'rails_helper'
     
     describe "#new" do
         before(:each) do
-            @movies_params = {title: "title_1",rating: "G",director: "abc123",release_date: 20161123}
+            @movies_params = {title: "128 Days",rating: "G",director: "Nolan",release_date: 20181005}
         end
         
         it "new movie" do
             get :new,  movie_id: @movie_1[:id]
-            expect(Movie.find(@movie_1.id)[:title]).to eq("title_1")
+            expect(Movie.find(@movie_1.id)[:title]).to eq("128 Days")
             expect(response).to have_http_status(200)
             expect(response).to render_template(:new)
         end
@@ -50,7 +50,7 @@ require 'rails_helper'
     describe "#update" do
         before(:each) do
             @movie_backup= {:title => @movie_1.title, :rating => @movie_1.rating, :director => @movie_1.director, :release_date => @movie_1.release_date}
-            @movie_params= {:title => "title_1", :rating => "PG", :director => "abc",:release_date => 20161118}
+            @movie_params= {:title => "128 Days", :rating => "PG", :director => "abc",:release_date => 20161118}
         end
         
         it "update movie" do
@@ -66,7 +66,7 @@ require 'rails_helper'
     
     describe "#destroy" do
         before(:each) do
-            @movie_2 = Movie.create(title: "title_1",rating: "G",director: "abc123",release_date: 20161123)
+            @movie_2 = Movie.create(title: "128 Days",rating: "G",director: "Nolan",release_date: 20181005)
         end
         it "destroy movie" do
             expect{ delete :destroy, id: @movie_2[:id]}.to change{Movie.all.count}.by(-1)
@@ -80,7 +80,7 @@ require 'rails_helper'
     
     describe "#create" do
         before(:all) do
-            @movie_params = {title: "title_1",rating: "G", description: "wer are here", director: "changed",release_date: 20161123}
+            @movie_params = {title: "128 Days",rating: "G", description: "wer are here", director: "changed",release_date: 20181005}
         end
         
         it "create movie" do
